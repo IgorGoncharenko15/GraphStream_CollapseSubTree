@@ -1,5 +1,6 @@
 package pkgMain;
 
+import java.io.IOException;
 import org.graphstream.algorithm.generator.BaseGenerator;
 import org.graphstream.algorithm.generator.LobsterGenerator;
 import org.graphstream.graph.Edge;
@@ -11,12 +12,14 @@ import org.graphstream.stream.SinkAdapter;
 import org.graphstream.ui.view.Viewer;
 
 import java.util.Iterator;
+import org.graphstream.stream.GraphParseException;
+import pkgParse.Txt2Dgs;
 
 /**
  * Created by pigne on 8/13/16.
  */
 public class CollapseSubTree {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, GraphParseException {
         System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
         String styleSheet =
             "node {" +
@@ -46,6 +49,7 @@ public class CollapseSubTree {
         }
         gen.end();
         */
+        /*
             g.addNode("A"); g.addNode("B"); g.addNode("C"); g.addNode("D"); g.addNode("E"); g.addNode("F");
             g.addEdge("AB", "A", "B",true);
             g.addEdge("CA", "A", "C",true);
@@ -57,8 +61,12 @@ public class CollapseSubTree {
             for (Node node : g) {
                node.addAttribute("ui.label", node.getId());
             }
-
-            
+            g.write("C:\\Users\\igor\\YandexDisk\\data\\networks\\testGraph.dgs");
+          */
+        Txt2Dgs DGSfile = new Txt2Dgs();
+        DGSfile.getDGS();
+        g.read("C:\\Users\\igor\\YandexDisk\\data\\networks\\HBS faculty.dgs");
+        
         ProxyPipe fromViewer = viewer.newViewerPipe();
         fromViewer.addSink(g);
 

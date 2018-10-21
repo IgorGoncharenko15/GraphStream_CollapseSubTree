@@ -58,7 +58,7 @@ public class run_test {
     
       public run_test() {
             Graph graph = new SingleGraph("tutorial 1");
-
+            
             graph.addAttribute("ui.stylesheet", styleSheet);
             graph.setAutoCreate(true);
             graph.setStrict(false);
