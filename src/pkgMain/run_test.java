@@ -49,9 +49,9 @@ public class run_test {
             Node node = nodes.next();
             System.out.println(node.getId() + " " + node.getDegree()  + "\n");
         }
-        */
+        
         //graph.display();
-            
+           */ 
         System.out.println("Done!");
     }
     
@@ -96,7 +96,7 @@ public class run_test {
         protected String styleSheet =
             "node {" +
         " shape: box; size: 45px, 45px; " +
-	" fill-mode: plain;	fill-color: red; stroke-mode: plain; 	stroke-color: blue; text-size: 40;"+
+	" fill-mode: plain;	fill-color: black; stroke-mode: plain; 	stroke-color: blue; text-size: 40;"+
             "}" +
             "node.marked {" +
             "	fill-color: red;" +

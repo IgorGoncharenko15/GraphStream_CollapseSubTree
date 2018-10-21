@@ -13,6 +13,7 @@ import org.graphstream.ui.view.Viewer;
 
 import java.util.Iterator;
 import org.graphstream.stream.GraphParseException;
+import org.graphstream.ui.swingViewer.ViewPanel;
 import pkgParse.Txt2Dgs;
 
 /**
@@ -33,7 +34,8 @@ public class CollapseSubTree {
         g.setAttribute("stylesheet", styleSheet);
 
         Viewer viewer = g.display();
-
+        ViewPanel v = g.display(true).getDefaultView();
+        v.addMouseWheelListener(event -> zoom(event.getWheelRotation() < 0));
         //Layout l = Layouts.newLayoutAlgorithm();
         //l.setStabilizationLimit(0);
         //viewer.enableAutoLayout(l);
@@ -135,5 +137,11 @@ public class CollapseSubTree {
                 e.printStackTrace();
             }
         }
+    }
+    private static ViewPanel view;
+    private static double viewPercent = 0.7;
+        public static void zoom(boolean zoomOut) {
+        viewPercent += viewPercent * 0.1 * (zoomOut ? -1 : 1);
+        view.getCamera().setViewPercent(viewPercent);
     }
 }
